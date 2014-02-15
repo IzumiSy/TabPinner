@@ -1,0 +1,31 @@
+{
+	"name": "Emergency Button",
+	"version": "0.1",
+	"manifest_version": 2,
+	
+	"description": "Extension for your emergency situation",
+	
+	"permissions": [
+		"tabs"
+	],
+	
+	"options_page": "options.html",	
+	
+	"background": {
+		"scripts": ["main.js"]
+	},
+	
+	"commands": {
+		"pintab": {
+			"suggested_key": {"default": "Alt+T" },
+			"description": "Pin a tab"
+		}
+	},
+	
+	"browser_action": {
+		"default_icon": "warning.png",
+		"default_title": "Emergency Button"
+	},
+	
+	"icons": { "48": "warning.png" }
+}
