@@ -17,6 +17,7 @@ chrome.browserAction.onClicked.addListener(function() {
 					Indexes[tabs[i].id] = tabs[i].index;
 				}
 			}
+			chrome.browserAction.setBadgeText({text: PinnedIds.length.toString()});
 		} else {
 			for (var i = 0; i < tabs.length;i++) {
 				for (var j = 0;j < PinnedIds.length;j++) {
@@ -35,6 +36,7 @@ chrome.browserAction.onClicked.addListener(function() {
 				}
 			}
 			PinnedIds.length = 0;
+			chrome.browserAction.setBadgeText({text: ""});
 		}
 	});
 });
