@@ -4,22 +4,32 @@
 // Variables
 var PinnedIds = new Array();
 var Indexes = new Object();
+var IgnoreQueries;
 var IsPinned;
 
 // Extension
 chrome.browserAction.onClicked.addListener(function() {
 	chrome.tabs.getAllInWindow(undefined, function(tabs) {
 		if (PinnedIds.length <= 0) {
-			for (var i = 0; i < tabs.length;i++) {
+			IgnoreQueries = localStorage.EmergencyBtnIgnoreQueries.toString().split("\n");
+			for (var i = 0;i < tabs.length;i++) {
 				if (tabs[i].pinned == false) {
-					chrome.tabs.update(tabs[i].id, {pinned: true});
-					PinnedIds.push(String(tabs[i].id));
-					Indexes[tabs[i].id] = tabs[i].index;
+					var tabid = tabs[i].id;
+					for (var j = 0;j < IgnoreQueries.length;j++)  {
+						var r = tabs[i].url.match(new RegExp(IgnoreQueries[j]));
+						if (r) {
+							console.log(r);
+							tabid = undefined;
+						}
+					}
+					PinnedIds.push(String(tabid));
+					Indexes[tabid] = tabs[i].index;
+					chrome.tabs.update(tabid, {pinned: true});
 				}
 			}
 			chrome.browserAction.setBadgeText({text: PinnedIds.length.toString()});
 		} else {
-			for (var i = 0; i < tabs.length;i++) {
+			for (var i = 0;i < tabs.length;i++) {
 				for (var j = 0;j < PinnedIds.length;j++) {
 					if (tabs[i].id == PinnedIds[j]) {
 						chrome.tabs.update(tabs[i].id, {pinned: false});

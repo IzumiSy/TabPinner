@@ -2,13 +2,13 @@
 // options.js
 
 document.getElementById('save').onclick = function() {
-	localStorage.EmergencyBtnQueries = document.getElementById('queryData').value;
+	localStorage.EmergencyBtnIgnoreQueries = document.getElementById('ignores').value;
 	window.close();	
 };
+
 document.body.onload = function() {
-	var current = localStorage.EmergencyBtnQueries;
-	
+	var current = localStorage.EmergencyBtnIgnoreQueries;
 	if (current) { 
-		document.getElementById('queryData').value = current;
+		document.getElementById('ignores').value = current;
 	}
 };
