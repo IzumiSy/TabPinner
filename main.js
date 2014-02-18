@@ -6,12 +6,14 @@ var PinnedIds = new Array();
 var Indexes = new Object();
 var IgnoreQueries;
 var IsPinned;
+var Targetize;
 
 // Extension
 chrome.browserAction.onClicked.addListener(function() {
 	chrome.tabs.getAllInWindow(undefined, function(tabs) {
 		if (PinnedIds.length <= 0) {
 			IgnoreQueries = localStorage.EmergencyBtnIgnoreQueries;
+			Targetize = localStorage.EmergencyBtnTargetize == "true" ? true : false;
 			if (IgnoreQueries != undefined && IgnoreQueries.length != 0) {
 				IgnoreQueries = IgnoreQueries.toString().split("\n");
 			}
@@ -20,9 +22,12 @@ chrome.browserAction.onClicked.addListener(function() {
 					var tabid = tabs[i].id;
 					for (var j = 0;j < IgnoreQueries.length;j++)  {
 						var r = tabs[i].url.match(new RegExp(IgnoreQueries[j]));
-						if (r) {
-							console.log(r);
-							tabid = undefined;
+						if (Targetize) {
+							// Target mode
+							if (!r) tabid = undefined;
+						} else {
+							// Ignore mode
+							if (r) tabid = undefined;
 						}
 					}
 					PinnedIds.push(String(tabid));
