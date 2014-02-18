@@ -11,15 +11,20 @@ var IsPinned;
 chrome.browserAction.onClicked.addListener(function() {
 	chrome.tabs.getAllInWindow(undefined, function(tabs) {
 		if (PinnedIds.length <= 0) {
-			IgnoreQueries = localStorage.EmergencyBtnIgnoreQueries.toString().split("\n");
+			IgnoreQueries = localStorage.EmergencyBtnIgnoreQueries;
+			if (IgnoreQueries != undefined) {
+				IgnoreQueries = IgnoreQueries.toString().split("\n");
+			}
 			for (var i = 0;i < tabs.length;i++) {
 				if (tabs[i].pinned == false) {
 					var tabid = tabs[i].id;
-					for (var j = 0;j < IgnoreQueries.length;j++)  {
-						var r = tabs[i].url.match(new RegExp(IgnoreQueries[j]));
-						if (r) {
-							console.log(r);
-							tabid = undefined;
+					if (IgnoreQueries != undefined) {
+						for (var j = 0;j < IgnoreQueries.length;j++)  {
+							var r = tabs[i].url.match(new RegExp(IgnoreQueries[j]));
+							if (r) {
+								console.log(r);
+								tabid = undefined;
+							}
 						}
 					}
 					PinnedIds.push(String(tabid));
