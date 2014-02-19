@@ -1,9 +1,9 @@
 {
-	"name": "Emergency Button",
+	"name": "Tab Pinner",
 	"version": "0.1",
 	"manifest_version": 2,
 	
-	"description": "Extension for your emergency situation",
+	"description": "Chrome extension that enhances the feature of pinning a tab",
 	
 	"permissions": [
 		"tabs"
@@ -24,7 +24,7 @@
 	
 	"browser_action": {
 		"default_icon": "warning.png",
-		"default_title": "Emergency Button"
+		"default_title": "Tab Pinner"
 	},
 	
 	"icons": { "48": "warning.png" }
