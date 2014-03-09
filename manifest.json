@@ -23,9 +23,9 @@
 	},
 	
 	"browser_action": {
-		"default_icon": "warning.png",
+		"default_icon": "main.png",
 		"default_title": "Tab Pinner"
 	},
 	
-	"icons": { "48": "warning.png" }
+	"icons": { "48": "main.png" }
 }

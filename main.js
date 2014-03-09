@@ -20,14 +20,16 @@ chrome.browserAction.onClicked.addListener(function() {
 			for (var i = 0;i < tabs.length;i++) {
 				if (tabs[i].pinned == false) {
 					var tabid = tabs[i].id;
-					for (var j = 0;j < IgnoreQueries.length;j++)  {
-						var r = tabs[i].url.match(new RegExp(IgnoreQueries[j]));
-						if (Targetize) {
-							// Target mode
-							if (!r) tabid = undefined;
-						} else {
-							// Ignore mode
-							if (r) tabid = undefined;
+					if (IgnoreQueries != undefined)  {
+						for (var j = 0;j < IgnoreQueries.length;j++)  {
+							var r = tabs[i].url.match(new RegExp(IgnoreQueries[j]));
+							if (Targetize) {
+								// Target mode
+								if (!r) tabid = undefined;
+							} else {
+								// Ignore mode
+								if (r) tabid = undefined;
+							}
 						}
 					}
 					PinnedIds.push(String(tabid));
