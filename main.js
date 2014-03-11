@@ -1,12 +1,13 @@
 
 // main.js
 
-// Variables
 var PinnedIds = new Array();
 var Indexes = new Object();
 var IgnoreQueries;
 var IsPinned;
 var Targetize;
+
+////////////////////////////////////////////////////
 
 function LoadQueries()
 {
@@ -65,23 +66,26 @@ function PinTabs(tabs)
 	}
 }
 
-// Extension
+////////////////////////////////////////////////////
+
 chrome.browserAction.onClicked.addListener(function() {
+	var ns;
+
 	chrome.tabs.getAllInWindow(undefined, function(tabs) {
 		if (PinnedIds.length <= 0) {
 			LoadQueries();
 			PinTabs(tabs);
-			chrome.browserAction.setBadgeText({text: PinnedIds.length.toString()});
 		} else {
 			UnpinTabs(tabs);
 			ReorderTabs(tabs);
 			PinnedIds.length = 0;
-			chrome.browserAction.setBadgeText({text: ""});
 		}
+		if (!PinnedIds.length) ns = "";
+		else ns = PinnedIds.length.toString();
+		chrome.browserAction.setBadgeText({text: ns});
 	});
 });
 
-// Shortcut Key
 chrome.commands.onCommand.addListener(function(command) {
 	if (command == "pintab") {
 		chrome.tabs.getSelected(undefined, function(tab) {
