@@ -1,6 +1,6 @@
 {
 	"name": "Tab Pinner",
-	"version": "0.1",
+	"version": "1.0",
 	"manifest_version": 2,
 	
 	"description": "Chrome extension that enhances the feature of pinning a tab",

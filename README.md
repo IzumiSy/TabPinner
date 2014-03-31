@@ -1,5 +1,5 @@
-TabPinner
----------
+TabPinner v1.0
+--------------
 ###1. Overview
 TabPinner is Google Chrome extension which allows the user to use "pin" function more effectively.
 
