@@ -1,0 +1,16 @@
+{
+  "extName": {
+    "message": "Tab Pinner",
+    "description": "Extension name"
+  },
+  
+  "extDesc": {
+    "message": "Enhances pinning a tab feature of Chrome",
+    "description": "Extension description"
+  },
+  
+  "extShortcutDesc": {
+    "message": "Pin a tab",
+    "description": "Shortcut name"
+  }
+}

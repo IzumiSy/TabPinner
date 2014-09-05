@@ -1,10 +1,10 @@
 {
-	"name": "Tab Pinner",
+	"name": "__MSG_extName__",
 	"version": "1.0",
 	"manifest_version": 2,
-	
-	"description": "Chrome extension that enhances the feature of pinning a tab",
-	
+	"description": "__MSG_extDesc__",
+	"default_locale": "ja",
+
 	"permissions": [
 		"tabs"
 	],
@@ -18,7 +18,7 @@
 	"commands": {
 		"pintab": {
 			"suggested_key": {"default": "Alt+T" },
-			"description": "Pin a tab"
+			"description": "__MSG_extShortcutDesc__"
 		}
 	},
 	
