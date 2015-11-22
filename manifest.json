@@ -12,7 +12,7 @@
 	"options_page": "options.html",	
 	
 	"background": {
-		"scripts": ["main.js"]
+		"scripts": ["js/main.js"]
 	},
 	
 	"commands": {
@@ -23,9 +23,9 @@
 	},
 	
 	"browser_action": {
-		"default_icon": "main.png",
+		"default_icon": "assets/main.png",
 		"default_title": "Tab Pinner"
 	},
 	
-	"icons": { "48": "main.png" }
+	"icons": { "48": "assets/main.png" }
 }
